@@ -1,0 +1,6 @@
+{
+  "name": "Tiny Scientists",
+  "description": "Little Minds. Big Discoveries. An interactive educational science platform for children of classes 4-8.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

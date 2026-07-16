@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Comic Sans MS", system-ui, sans-serif;
+}
+
+/* Children-Friendly Animations & Overrides */
+
+body {
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Dyslexia-Friendly Mode Class */
+.font-dyslexic {
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif !important;
+  letter-spacing: 0.15em !important;
+  word-spacing: 0.3em !important;
+  line-height: 1.8 !important;
+}
+
+/* High Contrast Mode Class */
+.high-contrast {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffff00 !important;
+}
+.high-contrast .card-flat {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 4px solid #ffff00 !important;
+}
+.high-contrast button {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  border: 3px solid #ffffff !important;
+}
+
+/* Custom Bouncy/Wobbly Kids Buttons */
+.btn-bouncy {
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-bouncy:active {
+  transform: translateY(4px) scale(0.95);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+/* Beating Animation for Human Body Heart */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.15);
+  }
+  40% {
+    transform: scale(1.05);
+  }
+  60% {
+    transform: scale(1.18);
+  }
+}
+.animate-heartbeat {
+  animation: heartbeat 1.2s infinite;
+}
+
+/* Spinning Orbit Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-orbit {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Glow Animation for Circuits */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5));
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.9);
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.9));
+  }
+}
+.animate-glow-circuit {
+  animation: glow 1.5s infinite;
+}
+
+/* Cloud drift */
+@keyframes drift {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+.animate-drift {
+  animation: drift 8s ease-in-out infinite;
+}
+
+/* Volcano rumble */
+@keyframes rumble {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-2px, 1px) rotate(-0.5deg); }
+  40% { transform: translate(1px, -1px) rotate(0.5deg); }
+  60% { transform: translate(-1px, -2px) rotate(0deg); }
+  80% { transform: translate(2px, 2px) rotate(1deg); }
+}
+.animate-rumble {
+  animation: rumble 0.15s infinite;
+}
