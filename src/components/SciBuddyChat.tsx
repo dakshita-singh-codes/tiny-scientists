@@ -61,22 +61,34 @@ export default function SciBuddyChat({ progress, lang, soundEnabled }: SciBuddyC
         throw new Error('Brain disconnect!');
       }
 
-      const data = await response.json();
-      setMessages(prev => [...prev, { role: 'model', text: data.text }]);
+      const demoAnswers: Record<string, string> = {
+  "why is the sky blue":
+    "The sky looks blue because blue light scatters more in the atmosphere.",
 
-      // Trigger automatic Speech Synthesis if enabled
-      if (soundEnabled) {
-        speakText(data.text);
-      }
-    } catch (error) {
-      console.error(error);
-      setMessages(prev => [
-        ...prev,
-        { role: 'model', text: lang === 'en' 
-          ? "Whoops! SciBuddy's satellite link is dusty. Try asking again, Tiny Scientist!" 
-          : "ओह! विज्ञान उपग्रह संपर्क टूट गया है। कृपया फिर से पूछें!" 
-        }
-      ]);
+  "how do plants eat":
+    "Plants make food using sunlight, water and carbon dioxide.",
+
+  "how does gravity work":
+    "Gravity pulls everything towards Earth.",
+
+  "why do stars twinkle":
+    "Stars twinkle because their light passes through moving air.",
+
+  "what is ai":
+    "AI means Artificial Intelligence. It helps computers learn and answer questions like humans."
+};
+
+const answer =
+  demoAnswers[userMsg.toLowerCase()] ||
+  "Wow! That's a great science question. Scientists are still exploring it!";
+
+setMessages(prev => [
+  ...prev,
+  {
+    role: 'model',
+    text: answer
+  }
+]);
     } finally {
       setLoading(false);
     }
