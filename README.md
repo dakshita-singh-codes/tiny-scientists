@@ -82,6 +82,9 @@ Open:
 ```txt
 http://localhost:3000
 ```
+### or click on this link to open 
+
+https://tiny-scientists.vercel.app/
 
 ---
 
