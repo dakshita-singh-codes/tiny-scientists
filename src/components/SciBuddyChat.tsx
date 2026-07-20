@@ -66,8 +66,13 @@ export default function SciBuddyChat({ progress, lang, soundEnabled }: SciBuddyC
       "AI means Artificial Intelligence. It helps computers learn and answer questions like humans."
   };
 
-  const answer =
-    demoAnswers[userMsg.toLowerCase()] ||
+  const normalized = userMsg
+  .toLowerCase()
+  .replace(/[?.!,]/g, "")
+  .trim();
+
+const answer =
+  demoAnswers[normalized] ||
     "Wow! That's a great science question. Scientists are still exploring it!";
 
   setMessages(prev => [
@@ -77,6 +82,7 @@ export default function SciBuddyChat({ progress, lang, soundEnabled }: SciBuddyC
       text: answer
     }
   ]);
+  return;
 }
 finally {
   setLoading(false);
