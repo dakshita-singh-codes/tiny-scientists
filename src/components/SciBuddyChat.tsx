@@ -49,50 +49,38 @@ export default function SciBuddyChat({ progress, lang, soundEnabled }: SciBuddyC
     setLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ messages: updatedMessages }),
-      });
+  const demoAnswers: Record<string, string> = {
+    "why is the sky blue":
+      "The sky looks blue because blue light scatters more in the atmosphere.",
 
-      if (!response.ok) {
-        throw new Error('Brain disconnect!');
-      }
+    "how do plants eat":
+      "Plants make food using sunlight, water and carbon dioxide.",
 
-      const demoAnswers: Record<string, string> = {
-  "why is the sky blue":
-    "The sky looks blue because blue light scatters more in the atmosphere.",
+    "how does gravity work":
+      "Gravity pulls everything towards Earth.",
 
-  "how do plants eat":
-    "Plants make food using sunlight, water and carbon dioxide.",
+    "why do stars twinkle":
+      "Stars twinkle because their light passes through moving air.",
 
-  "how does gravity work":
-    "Gravity pulls everything towards Earth.",
-
-  "why do stars twinkle":
-    "Stars twinkle because their light passes through moving air.",
-
-  "what is ai":
-    "AI means Artificial Intelligence. It helps computers learn and answer questions like humans."
-};
-
-const answer =
-  demoAnswers[userMsg.toLowerCase()] ||
-  "Wow! That's a great science question. Scientists are still exploring it!";
-
-setMessages(prev => [
-  ...prev,
-  {
-    role: 'model',
-    text: answer
-  }
-]);
-    } finally {
-      setLoading(false);
-    }
+    "what is ai":
+      "AI means Artificial Intelligence. It helps computers learn and answer questions like humans."
   };
+
+  const answer =
+    demoAnswers[userMsg.toLowerCase()] ||
+    "Wow! That's a great science question. Scientists are still exploring it!";
+
+  setMessages(prev => [
+    ...prev,
+    {
+      role: 'model',
+      text: answer
+    }
+  ]);
+}
+finally {
+  setLoading(false);
+}
 
   // Browser Speech Synthesis
   const speakText = (textToSpeak: string) => {
